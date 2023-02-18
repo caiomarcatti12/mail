@@ -19,7 +19,7 @@
       "CaioMarcatti12\\Mail\\" :  "src/"
     }
   },
-  "autoload" : {
+  "autoload-dev" : {
     "psr-4" : {
       "Tests\\Mail\\" :  "tests/"
     }
