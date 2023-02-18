@@ -34,40 +34,40 @@ class PhpMailerAdapter implements MailerInterface
     public function send(Mail $mail): bool{
         $this->validateSenderProperties();
         
-        $mail = new PHPMailer(true);
-        $mail->isSMTP();                                          
-        $mail->Host       = $this->senderProperties->getHost();
-        $mail->SMTPAuth   = $this->senderProperties->getSmtpAuth();
-        $mail->Username   = $this->senderProperties->getUsername();
-        $mail->Password   = $this->senderProperties->getPassword();
+        $phpmailer = new PHPMailer(true);
+        $phpmailer->isSMTP();                                          
+        $phpmailer->Host       = $this->senderProperties->getHost();
+        $phpmailer->SMTPAuth   = $this->senderProperties->getSmtpAuth();
+        $phpmailer->Username   = $this->senderProperties->getUsername();
+        $phpmailer->Password   =  $this->senderProperties->getPassword();
                                      
-        $mail->SMTPSecure = $this->senderProperties->getEncryptionTls();           //Enable implicit TLS encryption
+        $phpmailer->SMTPSecure = $this->senderProperties->getEncryptionTls();           //Enable implicit TLS encryption
+        $phpmailer->SMTPAutoTLS = $this->senderProperties->getEncryptionTls();           //Enable implicit TLS encryption
         
-        $mail->Port       = $this->senderProperties->getPort();
+        $phpmailer->Port       = $this->senderProperties->getPort();
 
-        $mail->setFrom($this->senderProperties->getUsername(), $this->senderProperties->getName());
+        $phpmailer->setFrom($this->senderProperties->getUsername(), $this->senderProperties->getName());
         
         /** @var Address $address */
         foreach($mail->getAddressList() as $address){
-            $mail->addAddress($address->getEmail(), $address->getName());
+            $phpmailer->addAddress($address->getEmail(), $address->getName());
         }
         
         /** @var Address $address */
         foreach($mail->getCopyList() as $address){
-            $mail->addCC($address->getEmail(), $address->getName());
+            $phpmailer->addCC($address->getEmail(), $address->getName());
         }
         
         if(Assert::isNotEmpty($mail->getReply())){
-            $mail->addReplyTo($mail->getReply()->getEmail(), $mail->getReply()->getName());
+            $phpmailer->addReplyTo($mail->getReply()->getEmail(), $mail->getReply()->getName());
         }
         
-        $mail->isHTML(true);
-        $mail->Subject = $mail->getSubject();
-        $mail->Body    = $mail->getBody();
-        $mail->AltBody = $mail->getAltBody()
-        ;
+        $phpmailer->isHTML(true);
+        $phpmailer->Subject = $mail->getSubject();
+        $phpmailer->Body    = $mail->getBody();
+        $phpmailer->AltBody = $mail->getAltBody();
 
-        $mail->send();
+        $phpmailer->send();
 
         return true;
     }

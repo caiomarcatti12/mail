@@ -3,7 +3,7 @@
 namespace CaioMarcatti12\Mail\Objects;
 
 use CaioMarcatti12\Core\Validation\Assert;
-use CaioMarcatti12\Mail\Adapter\InvalidMailException;
+use CaioMarcatti12\Mail\Exception\InvalidMailException;
 
 class Mail
 {
@@ -18,13 +18,16 @@ class Mail
 
     public function __construct(string $body, string $subject, AddressList $addressList)
     {
-        $this->addressList = new AddressList();
         $this->copyList = new AddressList();
         $this->attachmentList = new AttachmentList();
 
         if(Assert::isEmpty($body)) throw new InvalidMailException('body');
         if(Assert::isEmpty($subject)) throw new InvalidMailException('subject');
         if(Assert::isEmpty($addressList)) throw new InvalidMailException('addressList');
+    
+        $this->addressList = $addressList;
+        $this->body = $body;
+        $this->subject = $subject;
     }
 
     public function getBody(): string
