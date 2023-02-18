@@ -4,6 +4,7 @@ namespace CaioMarcatti12\Mail\Adapter;
 
 use CaioMarcatti12\Core\Validation\Assert;
 use CaioMarcatti12\Env\Objects\Property;
+use CaioMarcatti12\Mail\Exception\SenderPropertiesNotFoundException;
 use CaioMarcatti12\Mail\Interfaces\MailerInterface;
 use CaioMarcatti12\Mail\Objects\Mail;
 use CaioMarcatti12\Mail\Objects\SenderProperties;

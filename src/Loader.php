@@ -1,6 +1,6 @@
 <?php
 
-namespace CaioMarcatti12\Logger;
+namespace CaioMarcatti12\Mail;
 
 use CaioMarcatti12\Core\Bean\Objects\BeanProxy;
 use CaioMarcatti12\Core\Factory\InstanceFactory;
@@ -24,7 +24,7 @@ class Loader implements LauncherInterface
                 BeanProxy::add(MailerInterface::class, MemoryAdapter::class);
             }
 
-            InstanceFactory::createIfNotExists(Log::class);
+            InstanceFactory::createIfNotExists(MailerInterface::class);
         }
     }
 }

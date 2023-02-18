@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Tests\Mail;
 
 use PHPUnit\Framework\TestCase;
 

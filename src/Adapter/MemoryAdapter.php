@@ -1,6 +1,6 @@
 <?php
 
-namespace CaioMarcatti12\Mail\Adapter;
+namespace CaioMarcatti12\Mail\Exception;
 
 use CaioMarcatti12\Mail\Interfaces\MailerInterface;
 use CaioMarcatti12\Mail\Objects\Mail;
