@@ -22,7 +22,7 @@
   "minimum-stability": "stable",
   "prefer-stable": true,
   "require": {
-    "caiomarcatti12/core": "^2.0.7",
+    "caiomarcatti12/core": "^2.0.8",
     "caiomarcatti12/env": "^2.0.1"
   },
   "config": {
