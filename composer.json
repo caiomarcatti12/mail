@@ -1,0 +1,36 @@
+{
+  "name": "caiomarcatti12/mail",
+  "description": "",
+  "version": "1.0.0",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Caio Marcatti",
+      "email": "caiomarcatti12@gmail.com"
+    }
+  ],
+  "scripts": {
+    "test" : "./vendor/bin/pest --min=90",
+    "test-coverage" : "clear && php -d xdebug.remote_autostart=0 -d xdebug.remote_enable=0 -d xdebug.coverage_enable=true -d xdebug.mode=coverage ./vendor/bin/pest --min=90 --coverage"
+  },
+  "autoload" : {
+    "psr-4" : {
+      "CaioMarcatti12\\Mail\\" :  "src/"
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "require": {
+    "caiomarcatti12/core": "^2.0.7",
+    "caiomarcatti12/env": "^2.0.1"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "require-dev": {
+    "pestphp/pest": "^1.22"
+  }
+}
